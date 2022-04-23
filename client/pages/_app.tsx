@@ -5,6 +5,6 @@ export default function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />
 }
 
-MyApp.getInitialProps = async (ctx) => {
-  return App.getInitialProps(ctx)
-}
+// MyApp.getInitialProps = async (ctx) => {
+//   return App.getInitialProps(ctx)
+// }
