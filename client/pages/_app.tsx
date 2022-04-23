@@ -1,23 +1,10 @@
 import React from 'react'
-import App, { AppContext, AppInitialProps } from 'next/app'
-import { loadGetInitialProps } from 'next/dist/next-server/lib/utils'
+import App from 'next/app'
 
-async function appGetInitialProps ({
-  Component,
-  ctx
-}: AppContext): Promise<AppInitialProps> {
-  const pageProps = await loadGetInitialProps(Component, ctx)
-  return { pageProps }
+export default function MyApp({ Component, pageProps }) {
+  return <Component {...pageProps} />
 }
 
-export default class MyClassApp extends App {
-  static getInitialProps = appGetInitialProps
-
-  render () {
-    const { Component, pageProps } = this.props
-
-    return (
-      <Component {...pageProps} />
-    )
-  }
+MyApp.getInitialProps = async (ctx) => {
+  return App.getInitialProps(ctx)
 }
