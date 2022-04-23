@@ -1,0 +1,21 @@
+name: Next JS 404
+
+proxy:
+  frontend:
+    - nextjs-404.lndo.site:3000
+
+services:
+  frontend:
+    type: node:12
+    port: 3000
+    hosts: [next]
+    command: cd client && npm run build && npm run start
+    build:
+      - cd client && npm install
+    overrides:
+      environment:
+        NEXT_TELEMETRY_DISABLED: 1
+
+tooling:
+  npm:
+    service: frontend
